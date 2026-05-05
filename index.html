@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Яна — HR-эксперт для бизнеса</title>
+  <meta name="description" content="HR-эксперт для бизнеса: подбор персонала, аудит HR-процессов, адаптация, обучение сотрудников и снижение текучки." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #071711;
+      --bg-2: #0b2118;
+      --bg-3: #102b20;
+      --green: #153d2c;
+      --green-soft: #1d4a36;
+      --gold: #c9a45c;
+      --gold-soft: #e1c783;
+      --text: #f5efe3;
+      --muted: #b9b2a3;
+      --line: rgba(201, 164, 92, 0.22);
+      --white-line: rgba(245, 239, 227, 0.12);
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201, 164, 92, 0.12), transparent 32%),
+        radial-gradient(circle at 80% 10%, rgba(29, 74, 54, 0.95), transparent 30%),
+        linear-gradient(180deg, var(--bg), #06120d 50%, #071711);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      color: var(--gold-soft);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      color: #09150f;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      box-shadow: 0 14px 42px rgba(201, 164, 92, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 60px rgba(201, 164, 92, 0.34);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255, 255, 255, 0.035);
+      backdrop-filter: blur(14px);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(201, 164, 92, 0.55);
+      transform: translateY(-3px);
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(7, 23, 17, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #071711;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      color: rgba(245, 239, 227, 0.78);
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-soft);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-size: 22px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -180px;
+      top: 120px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 164, 92, 0.16), transparent 67%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.035);
+      margin-bottom: 28px;
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--gold-soft);
+      border-radius: 50%;
+      box-shadow: 0 0 18px rgba(225, 199, 131, 0.9);
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(52px, 7.4vw, 108px);
+      line-height: 0.88;
+      letter-spacing: -0.055em;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 em {
+      color: var(--gold-soft);
+      font-style: normal;
+    }
+
+    .hero-text {
+      max-width: 670px;
+      color: var(--muted);
+      font-size: 19px;
+      margin-bottom: 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 640px;
+    }
+
+    .stat {
+      border: 1px solid rgba(245, 239, 227, 0.1);
+      background: rgba(255, 255, 255, 0.035);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      min-height: 650px;
+      border-radius: 42px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(11, 33, 24, 0), rgba(11, 33, 24, 0.92)),
+        url("photo/hero-yana-professional.png") center / cover;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(201, 164, 92, 0.28);
+    }
+
+    .hero-photo-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(201, 164, 92, 0.34);
+      border-radius: 32px;
+      pointer-events: none;
+    }
+
+    .hero-photo-note {
+      position: absolute;
+      left: 32px;
+      right: 32px;
+      bottom: 32px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(5, 17, 12, 0.76);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(201, 164, 92, 0.22);
+    }
+
+    .hero-photo-note p {
+      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .hero-photo-note span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .decor-card {
+      position: absolute;
+      top: 46px;
+      left: -38px;
+      width: 170px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(201, 164, 92, 0.96), rgba(225, 199, 131, 0.96));
+      color: #071711;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.35);
+      z-index: 3;
+    }
+
+    .decor-card strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .decor-card span {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 560px;
+      border-radius: 38px;
+      background:
+        linear-gradient(180deg, rgba(11, 33, 24, 0.08), rgba(11, 33, 24, 0.86)),
+        url("photo/about-yana-lifestyle.png") center / cover;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image::after {
+      content: "HR Strategy";
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      color: rgba(245, 239, 227, 0.9);
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .feature {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(245, 239, 227, 0.1);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--gold-soft);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .services {
+      background:
+        linear-gradient(180deg, rgba(16, 43, 32, 0.72), rgba(7, 23, 17, 0.65));
+      border-top: 1px solid rgba(201, 164, 92, 0.12);
+      border-bottom: 1px solid rgba(201, 164, 92, 0.12);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: flex-end;
+      margin-bottom: 52px;
+    }
+
+    .section-head .section-title {
+      max-width: 760px;
+      margin-bottom: 0;
+    }
+
+    .section-head .section-subtitle {
+      max-width: 400px;
+      font-size: 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 300px;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(245, 239, 227, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      overflow: hidden;
+      transition: 0.25s ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(201, 164, 92, 0.16), transparent 45%);
+      opacity: 0;
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201, 164, 92, 0.42);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.24);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-number {
+      color: var(--gold-soft);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      margin-bottom: 42px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card h3 {
+      position: relative;
+      z-index: 2;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 34px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
+    .service-card p {
+      position: relative;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .service-result {
+      position: relative;
+      z-index: 2;
+      padding-top: 18px;
+      border-top: 1px solid rgba(245, 239, 227, 0.11);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 52px;
+    }
+
+    .case-card {
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 239, 227, 0.1);
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+    }
+
+    .case-image {
+      height: 230px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .case-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,23,17,0.05), rgba(7,23,17,0.74));
+    }
+
+    .case-image.one { background-image: url("photo/case-turnover.png"); }
+    .case-image.two { background-image: url("photo/case-hiring.png"); }
+    .case-image.three { background-image: url("photo/case-hr-process.png"); }
+
+    .case-content {
+      padding: 28px;
+    }
+
+    .case-content h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .before-after {
+      display: grid;
+      gap: 14px;
+    }
+
+    .ba-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(245, 239, 227, 0.08);
+    }
+
+    .ba-item strong {
+      display: block;
+      color: var(--gold-soft);
+      margin-bottom: 6px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ba-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .process {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(201, 164, 92, 0.12), transparent 32%),
+        linear-gradient(180deg, rgba(7, 23, 17, 0.2), rgba(16, 43, 32, 0.45));
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+
+    .process-step {
+      padding: 28px;
+      border-radius: 26px;
+      border: 1px solid rgba(245, 239, 227, 0.1);
+      background: rgba(255,255,255,0.035);
+      min-height: 250px;
+    }
+
+    .process-step strong {
+      display: inline-grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(201, 164, 92, 0.14);
+      border: 1px solid var(--line);
+      color: var(--gold-soft);
+      margin-bottom: 34px;
+    }
+
+    .process-step h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 31px;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      padding: 52px;
+      border-radius: 42px;
+      background:
+        linear-gradient(135deg, rgba(16, 43, 32, 0.94), rgba(5, 17, 12, 0.96)),
+        radial-gradient(circle at 80% 20%, rgba(201, 164, 92, 0.16), transparent 35%);
+      border: 1px solid rgba(201, 164, 92, 0.25);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(201, 164, 92, 0.18);
+      pointer-events: none;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-content .section-title {
+      max-width: 780px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .contact-image {
+      min-height: 430px;
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(7,23,17,0.05), rgba(7,23,17,0.72)),
+        url("photo/final-yana-contact.png") right center / cover;
+      background-position: 82% center;
+      border: 1px solid rgba(201, 164, 92, 0.22);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer {
+      padding: 34px 0;
+      color: rgba(245, 239, 227, 0.58);
+      border-top: 1px solid rgba(245, 239, 227, 0.08);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .about-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-card,
+      .about-image,
+      .contact-image {
+        min-height: 520px;
+      }
+
+      .services-grid,
+      .cases-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head .section-title {
+        margin-bottom: 22px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, var(--container));
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 76px;
+        left: 14px;
+        right: 14px;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 22px;
+        border-radius: 22px;
+        background: rgba(7, 23, 17, 0.96);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 124px;
+      }
+
+      .hero h1 {
+        font-size: clamp(48px, 16vw, 72px);
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .hero-stats,
+      .services-grid,
+      .cases-grid,
+      .process-grid,
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-card,
+      .about-image,
+      .contact-image {
+        min-height: 460px;
+        border-radius: 30px;
+      }
+
+      .decor-card {
+        display: none;
+      }
+
+      .contact-card {
+        padding: 28px;
+        border-radius: 30px;
+      }
+
+      .hero-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="На главный экран">
+        <span class="logo-mark">Я</span>
+        <span>Яна · HR Expert</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">О себе</a>
+        <a href="#services">Услуги</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#process">Процесс</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="menuBtn" aria-label="Открыть меню">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-badge"><span></span> Premium HR consulting</div>
+          <h1>HR-эксперт для бизнеса, который выбирает <em>сильных людей</em></h1>
+          <p class="hero-text">
+            Помогаю выстраивать систему подбора, адаптации и удержания сотрудников, чтобы бизнес рос без кадрового хаоса, текучки и бесконечного поиска людей.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Записаться на консультацию</a>
+            <a class="btn btn-secondary" href="https://t.me/username" target="_blank" rel="noopener">Связаться</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>10+</strong>
+              <span>лет опыта в HR и управлении персоналом</span>
+            </div>
+            <div class="stat">
+              <strong>200+</strong>
+              <span>закрытых вакансий для бизнеса</span>
+            </div>
+            <div class="stat">
+              <strong>40→15%</strong>
+              <span>снижение текучки в проектах</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap reveal">
+          <div class="decor-card">
+            <strong>HR</strong>
+            <span>system · people · result</span>
+          </div>
+          <div class="hero-photo-card">
+            <div class="hero-photo-note">
+              <p>Команда должна усиливать бизнес, а не съедать его изнутри.</p>
+              <span>Подбор · адаптация · удержание · HR-аудит</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image reveal"></div>
+
+        <div class="about-text reveal">
+          <div class="section-kicker">О себе</div>
+          <h2 class="section-title">HR, который говорит с бизнесом на языке результата</h2>
+          <p>
+            Я работаю с компаниями, которым важно не просто закрыть вакансию, а построить понятную и устойчивую систему работы с людьми.
+          </p>
+          <p>
+            За годы практики я прошла путь от операционного подбора до комплексного HR-сопровождения бизнеса.
+          </p>
+          <p>
+            Моя сильная сторона — видеть не только резюме кандидата, но и реальные причины кадровых проблем внутри компании.
+          </p>
+          <p>
+            Помогаю навести порядок в подборе, адаптации, мотивации и управлении персоналом без лишней бюрократии и процессов для галочки.
+          </p>
+
+          <div class="about-features">
+            <div class="feature">
+              <strong>10+ лет опыта</strong>
+              <span>в подборе и управлении персоналом</span>
+            </div>
+            <div class="feature">
+              <strong>Системный подход</strong>
+              <span>к найму, адаптации и удержанию</span>
+            </div>
+            <div class="feature">
+              <strong>Работа с бизнесом</strong>
+              <span>через цифры, процессы и результат</span>
+            </div>
+            <div class="feature">
+              <strong>Без лишней воды</strong>
+              <span>только решения, которые можно внедрить</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-kicker">Услуги</div>
+            <h2 class="section-title">HR-решения для компаний, которым нужен порядок в людях и процессах</h2>
+          </div>
+          <p class="section-subtitle">
+            От подбора сотрудников до настройки процессов, которые помогают бизнесу не терять людей, деньги и время.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-number">01</div>
+            <h3>Подбор персонала</h3>
+            <p>Нахожу специалистов, которые подходят не только по навыкам, но и по культуре компании.</p>
+            <div class="service-result"><b>Результат:</b> быстрее закрываются вакансии и снижается риск ошибочного найма.</div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-number">02</div>
+            <h3>HR-аудит</h3>
+            <p>Разбираю текущую систему найма, адаптации, мотивации и управления сотрудниками.</p>
+            <div class="service-result"><b>Результат:</b> становится понятно, где бизнес теряет людей, деньги и время.</div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-number">03</div>
+            <h3>Адаптация</h3>
+            <p>Выстраиваю понятный путь новичка: от первого дня до уверенной работы в команде.</p>
+            <div class="service-result"><b>Результат:</b> сотрудники быстрее включаются в работу и реже уходят.</div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-number">04</div>
+            <h3>Обучение</h3>
+            <p>Помогаю определить зоны роста команды и запустить обучение под реальные задачи бизнеса.</p>
+            <div class="service-result"><b>Результат:</b> сотрудники работают увереннее, команда становится сильнее.</div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-number">05</div>
+            <h3>HR-консалтинг</h3>
+            <p>Сопровождаю собственников и руководителей в вопросах найма, удержания и управления людьми.</p>
+            <div class="service-result"><b>Результат:</b> кадровые решения становятся управляемыми, а не хаотичными.</div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-number">06</div>
+            <h3>Снижение текучки</h3>
+            <p>Анализирую причины ухода сотрудников и помогаю снизить потери команды.</p>
+            <div class="service-result"><b>Результат:</b> меньше постоянных замен, больше стабильности и контроля.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-kicker">Кейсы</div>
+          <h2 class="section-title">Результаты, которые можно измерить</h2>
+          <p class="section-subtitle">
+            Формат «было → стало» показывает главное: HR должен влиять на бизнес, а не просто красиво лежать в документах.
+          </p>
+        </div>
+
+        <div class="cases-grid">
+          <article class="case-card reveal">
+            <div class="case-image one"></div>
+            <div class="case-content">
+              <h3>Снижение текучки</h3>
+              <div class="before-after">
+                <div class="ba-item">
+                  <strong>Было</strong>
+                  <span>Текучка сотрудников достигала 40%, команда постоянно обновлялась.</span>
+                </div>
+                <div class="ba-item">
+                  <strong>Стало</strong>
+                  <span>Текучка снизилась до 15% после корректировки адаптации и мотивации.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <div class="case-image two"></div>
+            <div class="case-content">
+              <h3>Массовый подбор</h3>
+              <div class="before-after">
+                <div class="ba-item">
+                  <strong>Было</strong>
+                  <span>Сроки найма растягивались, отделы работали с нехваткой людей.</span>
+                </div>
+                <div class="ba-item">
+                  <strong>Стало</strong>
+                  <span>20 вакансий закрыты за 2 месяца благодаря точной воронке отбора.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card reveal">
+            <div class="case-image three"></div>
+            <div class="case-content">
+              <h3>HR-процессы</h3>
+              <div class="before-after">
+                <div class="ba-item">
+                  <strong>Было</strong>
+                  <span>Подбор, адаптация и оценка сотрудников велись без единой структуры.</span>
+                </div>
+                <div class="ba-item">
+                  <strong>Стало</strong>
+                  <span>Внедрены регламенты, шаблоны интервью и контрольные точки.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-kicker">Процесс</div>
+          <h2 class="section-title">Без хаоса. Без лишних созвонов. По делу.</h2>
+          <p class="section-subtitle">
+            Работа строится так, чтобы быстро понять проблему, собрать план и внедрить решения, которые реально двигают бизнес.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step reveal">
+            <strong>1</strong>
+            <h3>Диагностика</h3>
+            <p>Разбираем текущую ситуацию: вакансии, текучку, команду, процессы и слабые места.</p>
+          </div>
+          <div class="process-step reveal">
+            <strong>2</strong>
+            <h3>План действий</h3>
+            <p>Определяем, что нужно исправить в первую очередь и какие решения дадут быстрый результат.</p>
+          </div>
+          <div class="process-step reveal">
+            <strong>3</strong>
+            <h3>Внедрение</h3>
+            <p>Настраиваем подбор, адаптацию, обучение или другие HR-процессы под задачи бизнеса.</p>
+          </div>
+          <div class="process-step reveal">
+            <strong>4</strong>
+            <h3>Контроль</h3>
+            <p>Смотрим цифры, корректируем действия и доводим систему до рабочего состояния.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-content">
+            <div class="section-kicker">Контакты</div>
+            <h2 class="section-title">Сильная команда не появляется случайно. Её нужно собрать, настроить и удержать.</h2>
+            <p class="section-subtitle">
+              Если в компании есть проблемы с подбором, адаптацией, текучкой или управлением персоналом — начнём с диагностики и найдём решение без лишней воды.
+            </p>
+
+            <div class="contact-links">
+              <a class="btn btn-primary" href="https://t.me/yapalaicheva" target="_blank" rel="noopener">Написать в Telegram</a>
+              <a class="btn btn-secondary" href="https://wa.me/79000100151" target="_blank" rel="noopener">Написать в WhatsApp</a>
+              <a class="btn btn-secondary" href="mailto:yanochka.orlova123@gmail.com">написать на почту</a>
+            </div>
+          </div>
+
+          <div class="contact-image"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Яна · HR Expert</span>
+      <span>Подбор · аудит · адаптация · консалтинг</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      menuBtn.textContent = navLinks.classList.contains('active') ? '×' : '☰';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+  </script>
+</body>
+</html>
